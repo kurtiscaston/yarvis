@@ -134,7 +134,18 @@ shortcuts, and every timing that matters.
 
 ## License
 
-Copyright © 2026 Kurtis. All rights reserved.
+Yarvis is source-available under the [Sustainable Use License](LICENSE.md).
+In short:
 
-This project has no license. The source is here to be read; it may not be
-copied, modified, redistributed or sold without written permission.
+- You may use and modify it for your own internal business purposes, or for
+  personal or other non-commercial use.
+- You may share it with others only free of charge and for non-commercial
+  purposes.
+- You may not sell it.
+
+This is not an open-source license. The summary above is not a substitute for
+the license itself.
+
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md); the first
+pull request from each contributor needs agreement to the
+[contributor license agreement](CLA.md).

@@ -6,6 +6,7 @@ members = ["crates/core", "src-tauri"]
 version = "0.0.1"
 edition = "2021"
 publish = false
+license-file = "LICENSE.md"
 
 [profile.release]
 codegen-units = 1
