@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Launcher Spike",
+  "productName": "Yarvis",
   "version": "0.0.1",
-  "identifier": "dev.launcher.spike",
+  "identifier": "io.github.kurtiscaston.yarvis",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -14,7 +14,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "Launcher",
+        "title": "Yarvis",
         "width": 760,
         "height": 484,
         "visible": false,

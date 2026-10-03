@@ -4,11 +4,11 @@
 mod idle;
 mod timing;
 
-use launcher_core::search::{sort_items, Engine, Hit};
-use launcher_core::settings::Settings;
-use launcher_core::theme::{self, Theme, DEFAULT_THEME};
-use launcher_core::usage::Usage;
-use launcher_core::{apps, now_secs, Action, Item};
+use yarvis_core::search::{sort_items, Engine, Hit};
+use yarvis_core::settings::Settings;
+use yarvis_core::theme::{self, Theme, DEFAULT_THEME};
+use yarvis_core::usage::Usage;
+use yarvis_core::{apps, now_secs, Action, Item};
 use serde::Serialize;
 use std::path::PathBuf;
 use std::sync::atomic::{AtomicBool, Ordering};
@@ -325,7 +325,7 @@ fn build_items(themes: &[Theme]) -> Vec<Item> {
         Item::command("Show or hide timings", "timings.toggle", None),
         Item::command("Measure idle CPU for 30 seconds", "idle.measure", None),
         Item::command("Rescan applications", "apps.rescan", None),
-        Item::command("Quit Launcher", "app.quit", None),
+        Item::command("Quit Yarvis", "app.quit", None),
     ]);
     sort_items(&mut items);
     items
@@ -402,7 +402,7 @@ fn main() {
                 }
             }
             WindowEvent::CloseRequested { api, .. } => {
-                // Alt+F4 hides rather than exits; "Quit Launcher" exits.
+                // Alt+F4 hides rather than exits; "Quit Yarvis" exits.
                 api.prevent_close();
                 hide_launcher(window.app_handle());
             }

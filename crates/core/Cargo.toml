@@ -1,0 +1,12 @@
+[package]
+name = "yarvis-core"
+description = "The UI-agnostic core of Yarvis: app discovery, fuzzy search, frecency, themes, settings"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+license-file.workspace = true
+
+[dependencies]
+nucleo-matcher = "0.3"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"

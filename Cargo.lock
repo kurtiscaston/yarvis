@@ -1716,29 +1716,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "launcher-core"
-version = "0.0.1"
-dependencies = [
- "nucleo-matcher",
- "serde",
- "serde_json",
-]
-
-[[package]]
-name = "launcher-spike"
-version = "0.0.1"
-dependencies = [
- "launcher-core",
- "open",
- "serde",
- "serde_json",
- "sysinfo",
- "tauri",
- "tauri-build",
- "tauri-plugin-global-shortcut",
-]
-
-[[package]]
 name = "libappindicator"
 version = "0.9.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -4499,6 +4476,29 @@ name = "xkeysym"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b9cc00251562a284751c9973bace760d86c0276c471b4be569fe6b068ee97a56"
+
+[[package]]
+name = "yarvis"
+version = "0.0.1"
+dependencies = [
+ "open",
+ "serde",
+ "serde_json",
+ "sysinfo",
+ "tauri",
+ "tauri-build",
+ "tauri-plugin-global-shortcut",
+ "yarvis-core",
+]
+
+[[package]]
+name = "yarvis-core"
+version = "0.0.1"
+dependencies = [
+ "nucleo-matcher",
+ "serde",
+ "serde_json",
+]
 
 [[package]]
 name = "yoke"

@@ -1,6 +1,7 @@
 {
-  "name": "launcher-spike",
+  "name": "yarvis",
   "private": true,
+  "license": "SEE LICENSE IN LICENSE.md",
   "version": "0.0.1",
   "type": "module",
   "scripts": {
@@ -11,7 +12,7 @@
     "app": "tauri dev",
     "app:release": "tauri build --no-bundle",
     "test": "cargo test --workspace",
-    "bench": "cargo run --release -p launcher-core --example bench"
+    "bench": "cargo run --release -p yarvis-core --example bench"
   },
   "dependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
