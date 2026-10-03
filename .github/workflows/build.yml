@@ -1,0 +1,64 @@
+# Builds and tests Yarvis on Windows and macOS, and keeps the Windows
+# executable as a downloadable artifact on each run.
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Windows
+            os: windows-latest
+          - name: macOS
+            os: macos-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Install UI dependencies
+        run: npm ci
+
+      - name: Type-check the UI
+        run: npm run check
+
+      # The Tauri shell embeds the built UI, so build it before compiling Rust.
+      - name: Build the UI
+        run: npm run build
+
+      - name: Run the Rust tests
+        run: cargo test --workspace --locked
+
+      - name: Build the release app
+        run: npm run app:release
+
+      - name: Keep the Windows executable
+        if: runner.os == 'Windows'
+        uses: actions/upload-artifact@v7
+        with:
+          name: yarvis-windows-x64
+          path: target/release/yarvis.exe
+          if-no-files-found: error
