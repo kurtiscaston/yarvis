@@ -131,3 +131,10 @@ macOS-only app discovery code was type-checked but not run.
 Not checked, because it needs a real Windows or macOS machine: the blurred
 transparent window, keyboard focus arriving on hotkey, opening `.lnk`
 shortcuts, and every timing that matters.
+
+## License
+
+Copyright © 2026 Kurtis. All rights reserved.
+
+This project has no license. The source is here to be read; it may not be
+copied, modified, redistributed or sold without written permission.
