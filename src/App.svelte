@@ -29,11 +29,14 @@
     backend = await connect();
 
     await backend.on('launcher-shown', (seq) => {
-      input.focus();
+      focusSearch();
       pointer = null;
       if (seq === null) return;
       // The first frame after the window is shown: report it for the hotkey timing.
+      // Focus again here. On Windows the webview often receives keyboard focus
+      // a tick after the shell asked for it, and an earlier focus() is dropped.
       requestAnimationFrame(async () => {
+        focusSearch();
         hotkey = await backend.firstFrame(seq);
       });
     });
@@ -60,7 +63,7 @@
     notice = start.problems[0] ?? '';
     await runSearch('');
     ready = true;
-    input.focus();
+    focusSearch();
   });
 
   function applyTheme(theme: Theme) {
@@ -91,6 +94,13 @@
       keySamples.add(performance.now() - typedAt);
       keyToFrame = keySamples.summary();
     });
+  }
+
+  /** Put the caret in the search box. Keys are dropped until this succeeds. */
+  function focusSearch() {
+    input.focus();
+    const end = input.value.length;
+    input.setSelectionRange(end, end);
   }
 
   function onInput(event: Event) {

@@ -17,3 +17,14 @@ serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 open = { version = "5", features = ["shellexecute-on-windows"] }
 sysinfo = { version = "0.39", default-features = false, features = ["system"] }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.62.2", features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Dwm",
+    "Win32_System_Threading",
+    "Win32_UI_Accessibility",
+    "Win32_UI_Controls",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+] }

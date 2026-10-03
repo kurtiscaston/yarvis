@@ -4488,6 +4488,7 @@ dependencies = [
  "tauri",
  "tauri-build",
  "tauri-plugin-global-shortcut",
+ "windows",
  "yarvis-core",
 ]
 

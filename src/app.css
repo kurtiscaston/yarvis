@@ -25,6 +25,14 @@ body {
   background: transparent;
 }
 
+/* Clip to the radius the window effect asks for, so the webview does not
+   paint square corners over the rounded frame. The browser preview draws
+   its own frame and must keep a square page. */
+html:not(.preview),
+html:not(.preview) body {
+  border-radius: 12px;
+}
+
 body {
   font-family: var(--font);
   color: var(--text);
