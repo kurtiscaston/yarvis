@@ -54,6 +54,8 @@ struct AppState {
     paths: Paths,
     timing: Mutex<Timing>,
     last_shown: Mutex<Instant>,
+    /// When the hotkey last toggled the window. A replayed press is ignored.
+    last_toggled: Mutex<Instant>,
     /// Mirrors `settings.hide_on_blur` so focus events never need the core lock.
     hide_on_blur: AtomicBool,
     measuring_idle: AtomicBool,
@@ -328,6 +330,13 @@ fn hide_launcher(app: &AppHandle) {
 
 fn toggle_launcher(app: &AppHandle) {
     let started = Instant::now();
+    if let Some(state) = app.try_state::<AppState>() {
+        let mut last = state.last_toggled.lock().unwrap();
+        if !platform::accept_toggle(started.saturating_duration_since(*last)) {
+            return;
+        }
+        *last = started;
+    }
     let on_main = app.clone();
     let _ = app.run_on_main_thread(move || {
         let visible = on_main
@@ -481,6 +490,7 @@ fn main() {
                 paths,
                 timing: Mutex::new(Timing::default()),
                 last_shown: Mutex::new(Instant::now()),
+                last_toggled: Mutex::new(Instant::now() - platform::TOGGLE_COALESCE),
                 measuring_idle: AtomicBool::new(false),
                 startup_problems: problems,
             });

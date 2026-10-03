@@ -13,6 +13,8 @@
 //!   Window Manager only shows the acrylic blur after the frame is extended
 //!   into the client area of a visible window.
 
+use std::time::Duration;
+
 /// Hide when another window is in front, the launcher is actually showing,
 /// and the show has settled. `foreground_is_ours` keeps a focus move into
 /// our own webview from counting as a switch away.
@@ -23,6 +25,19 @@ pub fn should_hide(
     foreground_is_ours: bool,
 ) -> bool {
     hide_on_blur && visible && settled && !foreground_is_ours
+}
+
+/// How long a second hotkey press is the same physical key, not a new toggle.
+///
+/// On X11, hiding the window moves focus and the server synthesizes a key
+/// release plus another press while Ctrl+Shift+Space is still down. That
+/// second press arrives about one poll of the hotkey thread later and would
+/// show the window again immediately.
+pub const TOGGLE_COALESCE: Duration = Duration::from_millis(150);
+
+/// `since_last` is the time since the previous accepted press.
+pub fn accept_toggle(since_last: Duration) -> bool {
+    since_last >= TOGGLE_COALESCE
 }
 
 #[cfg(windows)]
@@ -222,7 +237,7 @@ pub use win::{belongs_to_launcher, install_foreground_hook, launch, prepare, pre
 
 #[cfg(test)]
 mod tests {
-    use super::should_hide;
+    use super::{accept_toggle, should_hide};
 
     #[test]
     fn hides_when_a_foreign_window_is_in_front_after_the_show_settles() {
@@ -239,5 +254,16 @@ mod tests {
         assert!(!should_hide(true, true, false, false));
         assert!(!should_hide(true, false, true, false));
         assert!(!should_hide(false, true, true, false));
+    }
+
+    #[test]
+    fn a_replayed_hotkey_is_not_a_second_toggle() {
+        use std::time::Duration;
+
+        assert!(accept_toggle(Duration::from_millis(150)));
+        assert!(accept_toggle(Duration::from_millis(400)));
+        assert!(!accept_toggle(Duration::from_millis(149)));
+        assert!(!accept_toggle(Duration::from_millis(50)));
+        assert!(!accept_toggle(Duration::ZERO));
     }
 }
