@@ -19,7 +19,7 @@ const apps = [
   'PowerShell', 'Settings', 'Snipping Tool', 'Spotify', 'Task Manager', 'Terminal',
   'Visual Studio Code',
 ];
-const commands = ['Measure idle CPU for 30 seconds', 'Open themes folder', 'Quit Launcher', 'Reload themes'];
+const commands = ['Measure idle CPU for 30 seconds', 'Open themes folder', 'Quit Yarvis', 'Reload themes'];
 
 const items: Hit[] = [
   ...apps.map((title) => ({ id: `app:${title}`, title, kind: 'Application', matched: [] })),

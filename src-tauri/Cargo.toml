@@ -1,6 +1,6 @@
 [package]
-name = "launcher-spike"
-description = "Tauri shell for the launcher spike"
+name = "yarvis"
+description = "The Yarvis desktop app: a Tauri shell around yarvis-core"
 version.workspace = true
 edition.workspace = true
 license.workspace = true
@@ -9,7 +9,7 @@ license.workspace = true
 tauri-build = { version = "2", features = [] }
 
 [dependencies]
-launcher-core = { path = "../crates/core" }
+yarvis-core = { path = "../crates/core" }
 tauri = { version = "2", features = ["macos-private-api"] }
 tauri-plugin-global-shortcut = "2"
 serde = { version = "1", features = ["derive"] }

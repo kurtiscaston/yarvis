@@ -1,6 +1,6 @@
 [package]
-name = "launcher-core"
-description = "UI-agnostic launcher core: app discovery, fuzzy search, frecency, themes, settings"
+name = "yarvis-core"
+description = "The UI-agnostic core of Yarvis: app discovery, fuzzy search, frecency, themes, settings"
 version.workspace = true
 edition.workspace = true
 license.workspace = true

@@ -1,13 +1,13 @@
 //! Times the search engine alone, with no UI in the way.
 //!
-//!     cargo run --release -p launcher-core --example bench
+//!     cargo run --release -p yarvis-core --example bench
 //!
 //! Each query is typed one character at a time, the way a person would, so
 //! every prefix is searched. The index is far larger than a real machine's.
 
-use launcher_core::search::{sort_items, Engine};
-use launcher_core::usage::Usage;
-use launcher_core::Item;
+use yarvis_core::search::{sort_items, Engine};
+use yarvis_core::usage::Usage;
+use yarvis_core::Item;
 use std::time::Instant;
 
 const ITEMS: usize = 5_000;

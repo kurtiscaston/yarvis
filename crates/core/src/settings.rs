@@ -61,7 +61,7 @@ mod tests {
 
     #[test]
     fn round_trips_through_a_file() {
-        let dir = std::env::temp_dir().join(format!("launcher-settings-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("yarvis-settings-{}", std::process::id()));
         let path = dir.join("settings.json");
         assert_eq!(Settings::load(&path), Settings::default());
 

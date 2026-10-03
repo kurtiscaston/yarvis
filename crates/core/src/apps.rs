@@ -158,7 +158,7 @@ mod tests {
         } else {
             "desktop"
         };
-        let root = std::env::temp_dir().join(format!("launcher-apps-{}", std::process::id()));
+        let root = std::env::temp_dir().join(format!("yarvis-apps-{}", std::process::id()));
         let nested = root.join("a").join("b");
         std::fs::create_dir_all(&nested).unwrap();
         for dir in [&root, &root.join("a"), &nested] {

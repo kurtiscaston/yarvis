@@ -154,7 +154,7 @@ mod tests {
 
     #[test]
     fn a_user_theme_replaces_a_bundled_one_with_the_same_file_name() {
-        let dir = std::env::temp_dir().join(format!("launcher-themes-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("yarvis-themes-{}", std::process::id()));
         std::fs::create_dir_all(&dir).unwrap();
         std::fs::write(dir.join("dusk.json"), r##"{"name":"My Dusk","tokens":{"text":"#fff"}}"##).unwrap();
         std::fs::write(dir.join("mine.json"), r##"{"name":"Mine","appearance":"light","tokens":{}}"##).unwrap();

@@ -1,7 +1,8 @@
-# Launcher spike
+# Yarvis
 
-A first, small build of the launcher to answer one question before anything
-else is built on it: is Tauri 2 fast enough?
+Yarvis is a keyboard launcher for Windows and macOS. This is its first spike:
+a small build to answer one question before anything else is built on it. Is
+Tauri 2 fast enough?
 
 It is a real launcher, not a mock-up. A hotkey shows a window that was loaded
 at startup and kept hidden, typing searches your installed apps in Rust, and
@@ -19,14 +20,14 @@ npm run app            # development build, reloads the UI as you edit
 npm run app:release    # optimized build, no installer
 ```
 
-The release build lands in `target/release/` as `launcher-spike` (`.exe` on
+The release build lands in `target/release/` as `yarvis` (`.exe` on
 Windows). **Take timings from the release build only**; a development build is
 several times slower.
 
 Press **Ctrl+Shift+Space** to show and hide the launcher. To use another
 hotkey, change `hotkey` in `settings.json` and restart. The file sits one
 level above the folder that "Open themes folder" opens (on Windows,
-`%APPDATA%\dev.launcher.spike`). If the hotkey is already taken by another
+`%APPDATA%\io.github.kurtiscaston.yarvis`). If the hotkey is already taken by another
 app, the launcher opens at startup and says so.
 
 ## What to try
@@ -37,7 +38,7 @@ app, the launcher opens at startup and says so.
   a colour, then run "Reload themes".
 - Run "Measure idle CPU for 30 seconds". The window hides, then comes back
   with the result.
-- "Quit Launcher" exits. There is no tray icon yet.
+- "Quit Yarvis" exits. There is no tray icon yet.
 
 ## Reading the timings
 

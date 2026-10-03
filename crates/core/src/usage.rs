@@ -101,7 +101,7 @@ mod tests {
 
     #[test]
     fn survives_a_round_trip_to_disk() {
-        let dir = std::env::temp_dir().join(format!("launcher-usage-{}", std::process::id()));
+        let dir = std::env::temp_dir().join(format!("yarvis-usage-{}", std::process::id()));
         let path = dir.join("usage.json");
         let mut usage = Usage::load(&path);
         usage.record("a", 42);
