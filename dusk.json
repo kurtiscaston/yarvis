@@ -1,0 +1,14 @@
+{
+  "name": "Dusk",
+  "appearance": "dark",
+  "tokens": {
+    "surface": "rgba(22, 25, 51, 0.84)",
+    "tile": "rgba(237, 232, 220, 0.09)",
+    "text": "#EDE8DC",
+    "muted": "#9A9DC0",
+    "rule": "rgba(237, 232, 220, 0.12)",
+    "select": "#F2B33D",
+    "select-text": "#161933",
+    "caret": "#F2B33D"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Celadon",
+  "appearance": "light",
+  "tokens": {
+    "surface": "rgba(226, 236, 229, 0.88)",
+    "tile": "rgba(23, 35, 30, 0.08)",
+    "text": "#17231E",
+    "muted": "#55685F",
+    "rule": "rgba(23, 35, 30, 0.14)",
+    "select": "#17231E",
+    "select-text": "#E2ECE5",
+    "caret": "#0E6B5C"
+  }
+}

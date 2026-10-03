@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "What the launcher window may ask the core to do",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

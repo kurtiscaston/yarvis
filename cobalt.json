@@ -1,0 +1,14 @@
+{
+  "name": "Cobalt",
+  "appearance": "light",
+  "tokens": {
+    "surface": "#F6F6F3",
+    "tile": "#E6E6E1",
+    "text": "#14151A",
+    "muted": "#666874",
+    "rule": "#DEDED8",
+    "select": "#2447F9",
+    "select-text": "#FFFFFF",
+    "caret": "#2447F9"
+  }
+}
